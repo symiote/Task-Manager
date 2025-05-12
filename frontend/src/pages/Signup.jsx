@@ -55,8 +55,8 @@ const Signup = () => {
 
   }
   return (
-    <div className="h-[98vh] flex items-center justify-center bg-gray-100">
-      <div className="p-4 lg:w-3/6 sm:w-4/6 rounded-xl bg-white shadow-lg ">
+    <div className="h-screen flex items-center justify-center bg-gray-100">
+      <div className="w-5/6 p-4 lg:w-2/6 sm:w-5/6 rounded-xl bg-white shadow-lg ">
         <div className="font-semibold text-2xl">Signup</div>
         <input
           type="username"

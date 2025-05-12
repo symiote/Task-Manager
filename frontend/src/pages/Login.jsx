@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
 import { authActions } from "../store/auth";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -50,7 +51,8 @@ const Login = () => {
        
       //it will redirext ho home page
       navigate("/"); 
-
+      toast.success(`Hi.. ${username}`)
+      
     } catch (error) {
       console.error(error);
 
@@ -62,8 +64,8 @@ const Login = () => {
     }
   };
   return (
-    <div className="h-[98vh] flex items-center justify-center bg-gray-100">
-      <div className="p-4 lg:w-3/6 sm:w-4/6 rounded-xl bg-white shadow-lg">
+    <div className="h-screen flex items-center justify-center bg-gray-100">
+      <div className="w-5/6 p-4 lg:w-2/6 sm:w-5/6  rounded-xl bg-white shadow-lg">
         <div className="font-semibold text-2xl">Login</div>
         <input
           type="username"
@@ -75,7 +77,7 @@ const Login = () => {
         <input
           type="password"
           name="password"
-          placeholder="username"
+          placeholder="password"
           className="bg-gray-100 py-2 px-3 my-3 w-full border border-gray-300 rounded-md focus:outline-none "
           onChange={({ target }) => setPassword(target.value)}
         />

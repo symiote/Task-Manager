@@ -98,7 +98,7 @@ const InputData = ({ Inputdiv, setInputdiv, UpdatedData, setUpdatedData }) => {
       <div
         className={` ${Inputdiv} top-0 left-0 flex justify-center items-center h-screen w-full `}
       >
-        <div className="lg:w-3/6 sm:w-4/6 bg-gray-600 rounded-xl p-6 ">
+        <div className="w-5/6 lg:w-3/6 sm:w-4/6 bg-gray-600 rounded-xl p-4 ">
           <div className=" text-gray-200 text-2xl flex justify-end hover:text-gray-400 ">
             <button onClick={handleCross} className="btn-primary">
               <RxCross2 />{" "}

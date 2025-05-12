@@ -41,9 +41,9 @@ function App() {
   return (
     <>
       {/* Your Routes / Components */}
-      <ToastContainer position="top-right" autoClose={3000} />
+      <ToastContainer position="bottom-right" autoClose={3000} />
 
-      <div className="h-screen p-2 bg-gray-50 relative">
+      <div className="h-screen relative">
         <Routes>
           <Route exact path="/" element={<Home />}>
             <Route index element={<AllTasks />} />

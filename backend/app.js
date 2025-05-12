@@ -3,7 +3,7 @@ const app = express();
 const { conn } = require("./conn/conn");
 require("dotenv").config();
 const cors = require("cors")
-const UserAPI  = require("./routes/user");
+const UserAPI  = require("./routes/userRoute");
 const taskRoute = require("./routes/taskroute");
 
 //monodb connection
