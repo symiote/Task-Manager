@@ -4,12 +4,12 @@ const TaskSchema = new mongoose.Schema({
     title:{
         type:String,
         required:true,
-        unique:true,
+        // unique:true,
     },
     desc:{
         type:String,
         required:true,
-        unique:true,
+        // unique:true,
     },
     important:{
         type:Boolean,

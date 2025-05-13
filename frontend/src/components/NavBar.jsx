@@ -8,7 +8,7 @@ const NavBar = ({ activeMenu }) => {
   return (
     <div className='flex items-center gap-5 bg-white border-b border-gray-200/50 backdrop-blur-[2px] py-3 px-7 sticky top-0 z-30'>
       <button
-        className="block lg:hidden text-black"
+        className="block lg:hidden text-black hover:cursor-pointer"
         onClick={() => setOpenSideMenu(!openSideMenu)}
       >
         {openSideMenu ? (
@@ -22,8 +22,8 @@ const NavBar = ({ activeMenu }) => {
 
       {/* Mobile Sidebar */}
       {openSideMenu && (
-        <div className="fixed px-5 top-[61px] left-0 z-40 w-64 h-screen bg-white shadow-md border-r border-gray-200">
-          <Sidebar activeMenu={activeMenu} />
+        <div className="fixed lg:hidden px-5 top-[61px] left-0 z-40 w-64 h-screen bg-white shadow-md border-r border-gray-200">
+          <Sidebar  />
         </div>
       )}
     </div>

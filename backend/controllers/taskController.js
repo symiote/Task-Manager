@@ -12,8 +12,19 @@ exports.CreateTask = async (req, res) => {
         .json({ message: "Title, description are required." });
     }
 
+    //to check new task title is uniuqe 
+    const userData = await User.findById(id).populate({
+      path: "tasks",
+    });
+
+    // Check if the new task title already exists for this user
+    const existingTask = userData.tasks.find(task => task.title === title);
+    if (existingTask) {
+      return res.status(400).json({ message: "You already have a task with this title." });
+    }
+
     const newTask = await Task.create({ title, desc });
-    console.log(newTask);
+    console.log("task created",newTask);
 
     console.log(User);
     await User.findByIdAndUpdate(id, { $push: { tasks: newTask._id } });
@@ -27,14 +38,17 @@ exports.CreateTask = async (req, res) => {
   }
 };
 
+
+//get all task
 exports.GetAllTask = async (req, res) => {
   try {
     const { id } = req.headers;
-    console.log("id is  :", id);
+    // console.log("id is  :", id);
     const userData = await User.findById(id).populate({
       path: "tasks",
       options: { sort: { createdAt: -1 } },
     });
+    
 
     res.status(201).json({ message: "task fetching done!", data: userData });
   } catch (err) {
@@ -45,6 +59,8 @@ exports.GetAllTask = async (req, res) => {
   }
 };
 
+
+//delete a task
 exports.DeleteTask = async (req, res) => {
   try {
     const { id } = req.params; //task id which deleteing
@@ -54,7 +70,7 @@ exports.DeleteTask = async (req, res) => {
         .status(400)
         .json({ message: "not proovided any delted task id" });
     }
-    console.log("id is  :", id);
+    // console.log("id is  :", id);
     const userId = req.headers.id;
     await Task.findByIdAndDelete(id); //delete that task form task model
     await User.findByIdAndUpdate(userId, { $pull: { tasks: id } }); //pull/delete that task form user model also
@@ -72,7 +88,7 @@ exports.UpdateTask = async (req, res) => {
   try {
     const { id } = req.params; //task id which deleteing
     const { title, desc } = req.body;
-    console.log("update id is  :", id);
+    // console.log("update id is  :", id);
 
     //   await Task.findByIdAndDelete(id);//delete that task form task model
     await Task.findByIdAndUpdate(id, { title: title, desc: desc }); //pull/delete that task form user model also
@@ -152,7 +168,7 @@ exports.GetCompleteTask = async (req, res) => {
     // console.log("sara : ",Data);
 
     const completeTaskData = Data.tasks; //provide only tasks data form User model
-    console.log("complete : ", completeTaskData);
+    // console.log("complete : ", completeTaskData);
 
     res
       .status(201)
@@ -178,7 +194,7 @@ exports.GetIncompleteTask = async (req, res) => {
     // console.log("sara : ",Data);
 
     const incompleteTaskData = Data.tasks; //provide only tasks data form User model
-    console.log("complete : ", incompleteTaskData);
+    // console.log("Incomplete : ", incompleteTaskData);
 
     res
       .status(201)

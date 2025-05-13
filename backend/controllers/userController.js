@@ -12,9 +12,9 @@ exports.SignUp = async (req, res) => {
         message: "userName already exists",
       });
     }
-    if (username.length < 3) {
+    if (username.length < 3 || username.length > 15) {
       return res.status(400).json({
-        message: "password conatins at least 6 digits",
+        message: "Username must be between 3 and 15 characters.",
       });
     }
     if (password.length < 6) {

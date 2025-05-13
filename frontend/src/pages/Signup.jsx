@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { validateEmail } from "../utils/helper";
 import axios from "axios"
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -41,6 +42,8 @@ const Signup = () => {
       console.log(response);
       console.log("signup Success:", response.data);
 
+      toast.success("Signup complete");
+      
       navigate("/login")  
 
     } catch (error) {
