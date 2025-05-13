@@ -1,5 +1,4 @@
 need to update-
 1. localstorage for token - by cokkies
-2. make it responsive--done
-3. jwt_secret_key
-4. contoller---done
+
+

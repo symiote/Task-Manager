@@ -16,7 +16,6 @@ const Login = () => {
   }
 
   const [username, setUsername] = useState("");
-  // const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
@@ -52,7 +51,7 @@ const Login = () => {
       //it will redirext ho home page
       navigate("/"); 
       toast.success(`Hi.. ${username}`)
-      
+
     } catch (error) {
       console.error(error);
 

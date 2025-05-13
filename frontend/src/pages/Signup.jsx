@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { validateEmail } from "../utils/helper";
 import axios from "axios"
 import { useSelector } from "react-redux";
+
 const Signup = () => {
   const navigate = useNavigate();
   const isLoggedIn = useSelector((state)=>state.auth.isLoggedIn);
@@ -27,20 +28,19 @@ const Signup = () => {
       setError("Please Enter a valid email address.");
       return;
     }
-    if (password.length<6) {
-      setError("password conatins at least 6 digits");
-      return;
-    }
+  
     setError("");
 
     try {
       const response = await axios.post("http://localhost:4000/api/v1/sign-in",{username,email,password});
       
-      setUsername("");  setEmail("");  setPassword("");
+      setUsername("");  
+      setEmail(""); 
+      setPassword("");
 
       console.log(response);
       console.log("signup Success:", response.data);
-      
+
       navigate("/login")  
 
     } catch (error) {

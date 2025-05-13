@@ -89,7 +89,7 @@ const Cards = ({ home, setInputdiv, data, setUpdatedData }) => {
               item.complete === false ? "bg-red-400" : "bg-green-500"
             } text-white p-1 rounded text-sm`}
           >
-            {item.complete === true ? "completed" : "Pending.."}
+            {item.complete === true ? "completed" : "Pending"}
           </button>
           <div className="text-xl flex gap-4">
             <button onClick={() => handle_Important(item._id)} className="btn-primary">

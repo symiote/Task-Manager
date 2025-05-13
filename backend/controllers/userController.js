@@ -5,8 +5,6 @@ const jwt = require("jsonwebtoken");
 exports.SignUp = async (req, res) => {
   const { username, email, password } = req.body;
 
-  console.log("sing-in m h");
-
   try {
     const existUser = await User.findOne({ username });
     if (existUser) {
@@ -14,7 +12,12 @@ exports.SignUp = async (req, res) => {
         message: "userName already exists",
       });
     }
-    if (username.length < 4) {
+    if (username.length < 3) {
+      return res.status(400).json({
+        message: "password conatins at least 6 digits",
+      });
+    }
+    if (password.length < 6) {
       return res.status(400).json({
         message: "userName should have altleast 4 characters",
       });
